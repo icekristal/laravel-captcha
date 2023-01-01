@@ -9,16 +9,16 @@ use Vinkla\Hashids\Facades\Hashids;
 class IceCaptchaService
 {
 
-    private string $colorBackground = "#FFFFFF";
+    public string $colorBackground = "#FFFFFF";
 
-    private array $listColors = ["#FF0000", "#000000", "#0008FF"];
+    public array $listColors = ["#FF0000", "#000000", "#0008FF"];
 
-    private int $canvasWidth = 360;
-    private int $canvasHeight = 120;
+    public int $canvasWidth = 360;
+    public int $canvasHeight = 120;
 
     public mixed $captcha_text;
 
-    private mixed $readyCaptcha;
+    public mixed $readyCaptcha;
 
     private array $levelsSymbols = [
         0 => "1",
@@ -28,8 +28,8 @@ class IceCaptchaService
         4 => "!@#$%",
     ];
 
-    private int $length = 4;
-    private int $level = 2;
+    public int $length = 4;
+    public int $level = 2;
 
     public function __construct()
     {
