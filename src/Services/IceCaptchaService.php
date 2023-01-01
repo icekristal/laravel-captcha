@@ -94,9 +94,14 @@ class IceCaptchaService
         $y = ceil($this->canvasHeight * 0.66);
 
         foreach ($textArray as $symbol) {
-            $x = rand($beginX * $iterSymbol, $endX * $iterSymbol);
-            $size = ceil($this->canvasWidth / 5);
-            $image->text($symbol, $x, $y, function ($font) use ( $size) {
+            if($iterSymbol == 1) {
+                $x = rand($beginX, $endX * $iterSymbol);
+            }else{
+                $x = rand($endX * $iterSymbol - 1, $endX * $iterSymbol);
+            }
+
+            $size = ceil($this->canvasWidth / 4.5);
+            $image->text($symbol, $x, $y, function ($font) use ($size) {
                 $font->size($size);
                 $font->angle(rand(-10, 10));
                 $font->color($this->listColors[array_rand($this->listColors)]);
