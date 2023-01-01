@@ -102,13 +102,13 @@ class IceCaptchaService
 
             $size = ceil($this->canvasWidth / 4.5);
             $image->text($symbol, $x, $y, function ($font) use ($size) {
-                $font->file(config('captcha.size.text', 'https://fonts.cdnfonts.com/s/25096/Ghoulish.woff'));
+                $font->file(config('captcha.size.text', null));
                 $font->size($size);
                 $font->angle(rand(-10, 10));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
             $image->text($symbol, $x + rand(-2, 2), $y + rand(-2, 2), function ($font) use ($size) {
-                $font->file(config('captcha.size.text', 'https://fonts.cdnfonts.com/s/25096/Ghoulish.woff'));
+                $font->file(config('captcha.size.text', null));
                 $font->size($size);
                 $font->angle(rand(-5, 5));
                 $font->color($this->listColors[array_rand($this->listColors)]);
