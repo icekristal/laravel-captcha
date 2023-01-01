@@ -95,13 +95,13 @@ class IceCaptchaService
 
         foreach ($textArray as $symbol) {
             $x = rand($beginX * $iterSymbol, $endX * $iterSymbol);
-            $size = $this->canvasWidth;
-            $image->text($symbol, $x, $y, function ($font) use ($widthOneSymbol, $size) {
+            $size = ceil($this->canvasWidth / 5);
+            $image->text($symbol, $x, $y, function ($font) use ( $size) {
                 $font->size($size);
                 $font->angle(rand(-10, 10));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
-            $image->text($symbol, $x + rand(-2, 2), $y + rand(-2, 2), function ($font) use ($widthOneSymbol, $size) {
+            $image->text($symbol, $x + rand(-2, 2), $y + rand(-2, 2), function ($font) use ($size) {
                 $font->size($size);
                 $font->angle(rand(-5, 5));
                 $font->color($this->listColors[array_rand($this->listColors)]);
