@@ -16,10 +16,6 @@ class IceCaptchaService
     private int $canvasWidth = 360;
     private int $canvasHeight = 120;
 
-    private mixed $image_encode;
-    private mixed $image_no_encode;
-    private mixed $secret_key;
-
     public mixed $captcha_text;
 
     private mixed $readyCaptcha;
@@ -97,15 +93,15 @@ class IceCaptchaService
 
         foreach ($textArray as $symbol) {
             $x = rand($beginX * $iterSymbol, $endX * $iterSymbol);
-            $size = ceil($widthOneSymbol / 6);
+            $size = ceil($this->canvasWidth / 6);
             $image->text($symbol, $x, $y, function ($font) use ($widthOneSymbol, $size) {
                 $font->size($size);
                 $font->angle(rand(-10, 10));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
-            $image->text($symbol, $x + 5, $y, function ($font) use ($widthOneSymbol, $size) {
+            $image->text($symbol, $x + rand(-2, 2), $y + rand(-2, 2), function ($font) use ($widthOneSymbol, $size) {
                 $font->size($size);
-                $font->angle(rand(-10, 10));
+                $font->angle(rand(-5, 5));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
             $iterSymbol++;
