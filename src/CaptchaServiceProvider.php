@@ -13,6 +13,13 @@ class CaptchaServiceProvider extends ServiceProvider
         $this->registerConfig();
     }
 
+    public function boot()
+    {
+        if ($this->app->runningInConsole()) {
+            $this->publishConfigs();
+        }
+    }
+
     protected function registerConfig(): void
     {
         $this->mergeConfigFrom(__DIR__ . '/../config/captcha.php', 'captcha');
