@@ -1,0 +1,33 @@
+{
+    "name": "icekristal/laravel-captcha",
+    "description": "Laravel captcha",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "icekristal",
+            "email": "savatneev-anton@mail.ru"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": "^8.0",
+        "vinkla/hashids": "^10.0",
+        "laravel/framework": "^8|^9"
+    },
+    "autoload": {
+        "psr-4": {
+            "Icekristal\\LaravelCaptcha\\": "src/"
+        }
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Icekristal\\LaravelCaptcha\\CaptchaServiceProvider"
+            ],
+            "aliases": {
+                "IceCaptcha": "Icekristal\\LaravelCaptcha\\Facades\\IceCaptcha"
+            }
+        }
+    }
+}
