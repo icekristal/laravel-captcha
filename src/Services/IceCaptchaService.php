@@ -37,6 +37,8 @@ class IceCaptchaService
         $this->canvasWidth = config('captcha.size.canvas_width') ?? $this->canvasWidth;
         $this->canvasHeight = config('captcha.size.canvas_height') ?? $this->canvasHeight;
         $this->listColors = config('captcha.colors.list') ?? $this->listColors ?? ["#000000"];
+        $this->level = config('captcha.default_length') ?? 2;
+        $this->length = config('captcha.default_length') ?? 2;
     }
 
     public function generateAndGetAllInfo(): array
