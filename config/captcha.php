@@ -8,8 +8,9 @@ return [
     'size' => [
         'canvas_width' => 360,
         'canvas_height' => 120,
-        'text' => null,
+        'text' => 30,
     ],
+    'url_font' => null,
     'default_length' => 4,
     'default_level' => 2,
 ];

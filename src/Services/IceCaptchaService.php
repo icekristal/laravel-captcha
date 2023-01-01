@@ -19,6 +19,7 @@ class IceCaptchaService
     public mixed $captcha_text;
 
     public mixed $readyCaptcha;
+    public mixed $sizeText = 30;
 
     private array $levelsSymbols = [
         0 => "1",
@@ -39,6 +40,7 @@ class IceCaptchaService
         $this->listColors = config('captcha.colors.list') ?? $this->listColors ?? ["#000000"];
         $this->level = config('captcha.default_length') ?? 2;
         $this->length = config('captcha.default_length') ?? 2;
+        $this->sizeText = config('captcha.size.url_font') ?? $this->sizeText ?? 30;
     }
 
     public function generateAndGetAllInfo(): array
@@ -102,13 +104,13 @@ class IceCaptchaService
 
             $size = ceil($this->canvasWidth / 4.5);
             $image->text($symbol, $x, $y, function ($font) use ($size) {
-                $font->file(config('captcha.size.text', null));
+                $font->file(config('captcha.url_font', null));
                 $font->size($size);
                 $font->angle(rand(-10, 10));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
             $image->text($symbol, $x + rand(-2, 2), $y + rand(-2, 2), function ($font) use ($size) {
-                $font->file(config('captcha.size.text', null));
+                $font->file(config('captcha.url_font', null));
                 $font->size($size);
                 $font->angle(rand(-5, 5));
                 $font->color($this->listColors[array_rand($this->listColors)]);
@@ -204,6 +206,16 @@ class IceCaptchaService
     public function setListColors(array $listColors): IceCaptchaService
     {
         $this->listColors = $listColors;
+        return $this;
+    }
+
+    /**
+     * @param mixed $sizeText
+     * @return IceCaptchaService
+     */
+    public function setSizeText(mixed $sizeText): IceCaptchaService
+    {
+        $this->sizeText = $sizeText;
         return $this;
     }
 
