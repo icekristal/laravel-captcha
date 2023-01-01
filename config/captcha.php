@@ -8,6 +8,7 @@ return [
     'size' => [
         'canvas_width' => 360,
         'canvas_height' => 120,
+        'text' => 'https://fonts.cdnfonts.com/s/25096/Ghoulish.woff',
     ],
     'default_length' => 4,
     'default_level' => 2,
