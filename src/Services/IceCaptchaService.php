@@ -95,7 +95,7 @@ class IceCaptchaService
 
         foreach ($textArray as $symbol) {
             $x = rand($beginX * $iterSymbol, $endX * $iterSymbol);
-            $size = ceil($this->canvasWidth / 6);
+            $size = $this->canvasWidth;
             $image->text($symbol, $x, $y, function ($font) use ($widthOneSymbol, $size) {
                 $font->size($size);
                 $font->angle(rand(-10, 10));
