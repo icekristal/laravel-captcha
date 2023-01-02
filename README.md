@@ -33,7 +33,7 @@ $captcha = \Icekristal\LaravelCaptcha\Facades\IceCaptcha::generate()->getImageNo
 
 checking captcha:
 ```php
-$requestData = explode("&&", Hashids::decodeHex($this->get('captcha_secret')));
+$requestData = explode("&&", Crypt::decryptString($this->get('captcha_secret')));
 $requestData[0]; //text captcha
 $requestData[1]; //timestamp captcha
 ```

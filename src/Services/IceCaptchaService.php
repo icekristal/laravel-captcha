@@ -2,6 +2,7 @@
 
 namespace Icekristal\LaravelCaptcha\Services;
 
+use Illuminate\Support\Facades\Crypt;
 use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
 use Vinkla\Hashids\Facades\Hashids;
@@ -65,7 +66,7 @@ class IceCaptchaService
 
     public function getSecretKey(): string
     {
-        return Hashids::encodeHex($this->captcha_text."&&".now()->timestamp);
+        return Crypt::encryptString($this->captcha_text."&&".now()->timestamp);
     }
 
     public function generate(): static
