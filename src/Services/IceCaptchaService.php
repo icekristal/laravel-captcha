@@ -87,19 +87,18 @@ class IceCaptchaService
         }
 
         $countSymbols = count($textArray);
-        $widthOneSymbol = floor($this->canvasWidth / $countSymbols);
+        $widthOneSymbol = floor(($this->canvasWidth - $this->sizeText) / $countSymbols);
         $iterSymbol = 1;
 
         $beginX = 1;
         $endX = $widthOneSymbol;
 
         $y = ceil($this->canvasHeight * 0.66);
-        $x = 1;
         foreach ($textArray as $symbol) {
             if($iterSymbol == 1) {
-                $x = rand($beginX, floor($endX / 4 * $iterSymbol));
+                $x = rand($beginX, floor($endX * $iterSymbol));
             }else{
-                $x = rand($x * 1.3 * ($iterSymbol - 1), $x * 1.3 * $iterSymbol);
+                $x = rand($endX * ($iterSymbol - 1), $endX * $iterSymbol);
             }
 
             $image->text($symbol, $x, $y, function ($font) {
