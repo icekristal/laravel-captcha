@@ -12,5 +12,5 @@ return [
     ],
     'url_font' => null,
     'default_length' => 4,
-    'default_level' => 2,
+    'default_level' => 1,
 ];
