@@ -30,3 +30,10 @@ get only no encode image
 ```php
 $captcha = \Icekristal\LaravelCaptcha\Facades\IceCaptcha::generate()->getImageNoEncode();
 ```
+
+checking captcha:
+```php
+$requestData = explode("&&", Hashids::decodeHex($this->get('captcha_secret')));
+$requestData[0]; //text captcha
+$requestData[1]; //timestamp captcha
+```
