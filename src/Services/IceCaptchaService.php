@@ -65,7 +65,7 @@ class IceCaptchaService
 
     public function getSecretKey(): string
     {
-        return Hashids::encodeHex(strval($this->captcha_text."&&".now()->timestamp));
+        return Hashids::encodeHex($this->captcha_text."&&".now()->timestamp);
     }
 
     public function generate(): static
