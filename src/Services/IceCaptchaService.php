@@ -40,7 +40,7 @@ class IceCaptchaService
         $this->listColors = config('captcha.colors.list') ?? $this->listColors ?? ["#000000"];
         $this->level = config('captcha.default_length') ?? 2;
         $this->length = config('captcha.default_length') ?? 2;
-        $this->sizeText = config('captcha.size.url_font') ?? $this->sizeText ?? 30;
+        $this->sizeText = config('captcha.size.text')  ?? ceil($this->canvasWidth / 5) ?? 30;
     }
 
     public function generateAndGetAllInfo(): array
@@ -94,24 +94,23 @@ class IceCaptchaService
         $endX = $widthOneSymbol;
 
         $y = ceil($this->canvasHeight * 0.66);
-
+        $x = 1;
         foreach ($textArray as $symbol) {
             if($iterSymbol == 1) {
                 $x = rand($beginX, $endX * $iterSymbol);
             }else{
-                $x = rand($endX * $iterSymbol - 1, $endX * $iterSymbol);
+                $x = rand($x + 2, $x + 2 + 10);
             }
 
-            $size = ceil($this->canvasWidth / 4.5);
-            $image->text($symbol, $x, $y, function ($font) use ($size) {
+            $image->text($symbol, $x, $y, function ($font) {
                 $font->file(config('captcha.url_font', null));
-                $font->size($size);
+                $font->size($this->sizeText);
                 $font->angle(rand(-10, 10));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
-            $image->text($symbol, $x + rand(-2, 2), $y + rand(-2, 2), function ($font) use ($size) {
+            $image->text($symbol, $x + rand(-2, 2), $y + rand(-2, 2), function ($font) {
                 $font->file(config('captcha.url_font', null));
-                $font->size($size);
+                $font->size($this->sizeText);
                 $font->angle(rand(-5, 5));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
