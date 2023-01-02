@@ -94,12 +94,11 @@ class IceCaptchaService
         $endX = $widthOneSymbol;
 
         $y = ceil($this->canvasHeight * 0.66);
-        $x = 1;
         foreach ($textArray as $symbol) {
             if($iterSymbol == 1) {
                 $x = rand($beginX, $endX * $iterSymbol);
             }else{
-                $x = rand($x + 2, $x + 2 + 10);
+                $x = rand($endX * ($iterSymbol - 1), $endX * $iterSymbol);
             }
 
             $image->text($symbol, $x, $y, function ($font) {
