@@ -13,4 +13,5 @@ return [
     'url_font' => public_path() . '/fonts/HelveticaNeueCyr-Black.woff',
     'default_length' => 4,
     'default_level' => 1,
+    'rate_lines_x' => ceil(intval(env('CAPTCHA_RATE_LINES', 4))), //default amount lines: level * rate_lines_x
 ];
