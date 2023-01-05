@@ -17,6 +17,7 @@ class CaptchaServiceProvider extends ServiceProvider
     {
         if ($this->app->runningInConsole()) {
             $this->publishConfigs();
+            $this->publishFonts();
         }
     }
 
@@ -30,5 +31,12 @@ class CaptchaServiceProvider extends ServiceProvider
         $this->publishes([
             __DIR__ . '/../config/captcha.php' => config_path('captcha.php'),
         ], 'config');
+    }
+
+    protected function publishFonts(): void
+    {
+        $this->publishes([
+            __DIR__ . '/../public/fonts' => public_path('fonts'),
+        ], 'fonts');
     }
 }

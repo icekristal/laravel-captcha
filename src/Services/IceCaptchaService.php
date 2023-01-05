@@ -3,9 +3,7 @@
 namespace Icekristal\LaravelCaptcha\Services;
 
 use Illuminate\Support\Facades\Crypt;
-use Illuminate\Support\Str;
 use Intervention\Image\Facades\Image;
-use Vinkla\Hashids\Facades\Hashids;
 
 class IceCaptchaService
 {
@@ -217,6 +215,4 @@ class IceCaptchaService
         $this->sizeText = $sizeText;
         return $this;
     }
-
-
 }

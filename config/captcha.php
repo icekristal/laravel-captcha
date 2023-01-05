@@ -10,7 +10,7 @@ return [
         'canvas_height' => 120,
         'text' => 30,
     ],
-    'url_font' => null,
+    'url_font' => public_path() . '/fonts/HelveticaNeueCyr-Black.woff',
     'default_length' => 4,
     'default_level' => 1,
 ];

@@ -8,6 +8,11 @@ config:
 php artisan vendor:publish --provider="Icekristal\LaravelCaptcha\CaptchaServiceProvider" --tag="config"
 ```
 
+default fonts:
+```php
+php artisan vendor:publish --provider="Icekristal\LaravelCaptcha\CaptchaServiceProvider" --tag="fonts"
+```
+
 use:
 
 get all info. Return array keys: image_no_encode, image, secret_key
