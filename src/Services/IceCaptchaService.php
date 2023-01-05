@@ -71,7 +71,7 @@ class IceCaptchaService
     {
         $this->captcha_text = $this->generateText();
         $textArray = str_split($this->captcha_text);
-        $rateLines = config('captcha.rate_lines_x') ?? 4;
+        $rateLines = ceil(intval(config('captcha.rate_lines_x', 4))) ?? 4;
         if(!is_numeric($rateLines)) $rateLines = 4;
 
         $image = Image::canvas($this->canvasWidth, $this->canvasHeight, $this->colorBackground);
