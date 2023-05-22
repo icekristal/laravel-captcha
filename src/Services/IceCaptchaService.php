@@ -105,13 +105,13 @@ class IceCaptchaService
             $image->text($symbol, $x, $y, function ($font) {
                 $font->file(config('captcha.url_font', null));
                 $font->size($this->sizeText);
-                $font->angle(rand(-10, 10));
+                $font->angle(rand(-5, 5));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
-            $image->text($symbol, $x + rand(-3, 3), $y + rand(-2, 2), function ($font) {
+            $image->text($symbol, $x + rand(-1, 3), $y + rand(-2, 2), function ($font) {
                 $font->file(config('captcha.url_font', null));
                 $font->size($this->sizeText);
-                $font->angle(rand(-15, 15));
+                $font->angle(rand(-7, 7));
                 $font->color($this->listColors[array_rand($this->listColors)]);
             });
             $iterSymbol++;
